@@ -1,1 +1,1 @@
-Notes, Homework, and Documents ISYE 6420: Bayesian Statistics
+Notes, Homework, and Documents for ISYE 6420: Bayesian Statistics
