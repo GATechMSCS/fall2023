@@ -1,4 +1,0 @@
-lecture 1:
-optimization - a mathematical approach for seeking a "best" "decision/action" from a "set of alternative"
-
-
