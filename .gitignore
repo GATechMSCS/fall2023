@@ -1,9 +1,11 @@
 *pdf
 *doc
 *docx
-*/PreviousNotes
+PreviousNotes
 portopt_cvxpy-1.py
 monthly_prices.csv
-*/previous_hm
-*/lectures
-*/slides
+previous_hm
+slides
+examples
+support_material
+previous_slides
