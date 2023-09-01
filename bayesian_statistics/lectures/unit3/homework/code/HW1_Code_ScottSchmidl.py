@@ -5,7 +5,8 @@ from pgmpy.factors.discrete import TabularCPD
 from pgmpy.inference import CausalInference
 from pgmpy.models import BayesianNetwork
 
-# Question 1
+# QUESTION 1
+# THE CODE FOR THIS QUESTION WAS TAKEN FROM THE LESSON AND AMENDED FOR THIS USE CASE
 print("------------QUESTION 1-----------")
 '''BayesNetwork:
 After the semester Chad is in Coco Beach. Given that Chad is in Coco Beach, what is the probability that Chad got a car?'''
@@ -19,13 +20,13 @@ prob_stayCampus_given_car = 0.3
 prob_cocoBeach_not_car = 0.2
 prob_stayCampus_not_car = 0.8
 
-# SETUP NETWORK
+# NETWORK CONFIG
 grade_model = BayesianNetwork(
     [("A", "Car"),
      ("Car", "Coco Beach"),
      ("Car", "Campus"),])
 
-# PARAMETERS FOR MODEL
+# PARAMETERS
 cpd_A = TabularCPD(
     variable="A",
     variable_card=2,
@@ -56,7 +57,7 @@ cpd_campus = TabularCPD(
     evidence=["Car"],
     evidence_card=[2],)
 
-# ADD PARAETERS TO MODEL
+# ADD PARAMETERS
 grade_model.add_cpds(cpd_A,
                      cpd_car,
                      cpd_beach,
@@ -95,10 +96,10 @@ q = grade_infer.query(variables=["A"],
 print("P(cb|a)")
 print(q)
 
-# Answer:
+# ANSWER:
 '''The probablility is 0.5213'''
 
-# Question 2
+# QUESTION 2
 print("\n------------QUESTION 2-----------")
 #Tinel’s sign Sensitivty 
 ts_sens_tp = 0.98
@@ -197,8 +198,8 @@ Se = 1 - [(1 - Se_1) X (1 - Se_2) ... (1 - Se_k)]
 Sp = Sp_1 X Sp_2 ... Sp_k'''
 
 print("\n***PART B***")
-print(f"Combined Sensitivity for Parllel: {combined_sensitivity(test_se, 'parallel')}")
-print(f"Combined Specificity for Parllel: {combined_specificity(test_sp, 'parallel')}")
+print(f"Combined Sensitivity for Parallel: {combined_sensitivity(test_se, 'parallel')}")
+print(f"Combined Specificity for Parallel: {combined_specificity(test_sp, 'parallel')}")
 
 # C)
 '''Positive Predictive Value for tests (a) and (b),
@@ -207,13 +208,13 @@ if the prevalence of carpal tunnel syndrome in the general population is approxi
 print("\n***PART C***")
 se_serial = combined_sensitivity(test_se, 'serial')
 sp_serial = combined_specificity(test_sp, 'serial')
-print(f"Combined Positive Predicited Value for serial: {positive_predicted_value(se=se_serial, sp=sp_serial)}")
+print(f"Combined Positive Predicted Value for serial: {positive_predicted_value(se=se_serial, sp=sp_serial)}")
 
 se_parallel = combined_sensitivity(test_se, 'parallel')
 sp_parallel = combined_specificity(test_sp, 'parallel')
-print(f"Combined Positive Predicited Value for parallel: {positive_predicted_value(se=se_parallel, sp=sp_parallel)}")
+print(f"Combined Positive Predicted Value for parallel: {positive_predicted_value(se=se_parallel, sp=sp_parallel)}")
 
-# Question 3
+# QUESTION 3
 print("\n------------QUESTION 3-----------")
 '''
 1) student answers multiple choice exam with 2qs that have 4 choices each.
@@ -265,5 +266,5 @@ for n in range(1, 10):
     print(new_p_h2_A)
 
 # WHAT HAPPENS TO PROBABILITIES IN THIS CASE?
-'''The probabilities go down, because it becomes less and less probable that you know every answer'''    
+'''The probabilities go down, because it becomes less and less probable that you know every answer'''
 
