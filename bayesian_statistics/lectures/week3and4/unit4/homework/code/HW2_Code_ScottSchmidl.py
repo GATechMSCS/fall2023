@@ -1,16 +1,15 @@
 # IMPORTS
+import math as m
+from  scipy.stats import binom
+import pandas as pd
 import matplotlib.pyplot as plt
-import networkx as nx
-from pgmpy.factors.discrete import TabularCPD
-from pgmpy.inference import CausalInference
-from pgmpy.models import BayesianNetwork
 
 # QUESTION 1
 print("------------QUESTION 1-----------")
 
 # A)
 print("***PART A***")
-
+'''Find the probability that abs(x) < 0.5'''
 
 # B)
 print("\n***PART B***")
@@ -25,27 +24,89 @@ print("\n***PART D***")
 
 # QUESTION 2
 print("\n------------QUESTION 2-----------")
-
+'''
+System is operational if k out of n components are operational
+Assume: n = 8, k = 5, r = 3/2, lambda = 1/10
+t = months, lambda = inverse months, r is dimensionless
+For each component the probability of the system working at time t is p = e**((-0.1)*(t**3/2)) for t >= 0
+'''
 
 # A)
 print("***PART A***")
+n = 8
+k = 5
+r = 3/2
+lmbda = 1/10
+t = 3
+e = m.e
 
+prob_each_comp = (e**((-lmbda)*(t**r)))
+operational = binom.cdf(k - 1, n, prob_each_comp)
+print(f"Probability at 3 months that the system will be operational: {1 - operational}")
+'''
+ANSWER: 0.5818670523703137
+'''
 
 # B)
 print("\n***PART B***")
+'''
+Given the system is operational, what is the probability that exactly five components were operational?
+'''
 
+Pba = 1.0
+Pb = operational
+Pa = binom.pmf(5, 8, prob_each_comp)
+
+def bayes(Pba, Pa, Pbna=None, Pna=None, Pb=None):
+    # P(A | B) = (P(B | A) * P(A)) / P(B)
+    
+    if not Pb:
+        Pb = (Pa * Pba) + (Pna * Pbna)
+    return (Pba * Pa) / Pb
+
+exactly_five = bayes(Pba=Pba, Pa=Pa, Pb=Pb)
+print(f"Given the system is operational, the probability that exactly five components were operational: {exactly_five}")
+
+'''
+ANSWER: 0.663307140632011
+'''
 
 # QUESTION 3
 print("\n------------QUESTION 3-----------")
-
+'''
+firing times are defined as time instances when a neuron sends a signal to another linked neuron (a spike).
+rat brain cells cultureed for 18 days and stimulated at the rate of 1 Hz.
+MLE - Maximum Likelihood Estimation
+'''
+neuron = pd.read_excel(io='neurondiffs.xlsx', header=None, names=['firing_times'])['firing_times']
 
 # A)
 print("\n***PART A***")
+neuron.hist(bins=10)
+plt.show()
 
+'''
+It's a right-tailed histogram which is high on left and drops to be low on the right. This is a similar concept to the exponential density graph.
+
+'''
+n = 988
+x_i = neuron.sum()
+lam_MLE = n / x_i
+print(lam_MLE)
 
 # B)
 print("\n***PART B***")
+'''Find the posterior distribution of the lambda when the prior is gamma (18, 20)'''
+alpha = 18
+beta = 1/20
+lam = (alpha +n) / (x_i + beta)
+posterior = (lam**(alpha + n - 1)) * (m.e**(-lam * x_i + beta))
+print(posterior)
 
+'''What is the Bayes estimator for lambda?'''
+
+
+'''Find also the posterior variance of lambda'''
 
 # C)
 print("\n***PART C***")
