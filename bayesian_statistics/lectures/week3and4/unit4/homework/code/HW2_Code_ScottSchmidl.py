@@ -11,16 +11,20 @@ print("------------QUESTION 1-----------")
 print("***PART A***")
 '''Find the probability that abs(x) < 0.5'''
 
+x = .5
+print(x**(3/16) - -x**(3/16))
+
 # B)
 print("\n***PART B***")
-
+'''In .docx'''
 
 # C)
 print("\n***PART C***")
-
+'''In .docx'''
 
 # D)
 print("\n***PART D***")
+'''In .docx'''
 
 # QUESTION 2
 print("\n------------QUESTION 2-----------")
@@ -94,23 +98,54 @@ x_i = neuron.sum()
 lam_MLE = n / x_i
 print(lam_MLE)
 
+'''
+ANSWER: 0.9900623989833222
+'''
+
 # B)
 print("\n***PART B***")
 '''Find the posterior distribution of the lambda when the prior is gamma (18, 20)'''
 alpha = 18
-beta = 1/20
-lam = (alpha +n) / (x_i + beta)
-posterior = (lam**(alpha + n - 1)) * (m.e**(-lam * x_i + beta))
+beta = 20
+new_alpha = alpha + n
+new_beta = x_i + beta
+lam = 1 / new_beta
+likelihood = lam**(new_alpha - 1)
+gamma = m.e**(-lam * new_beta)
+posterior = likelihood * gamma
+
 print(posterior)
 
 '''What is the Bayes estimator for lambda?'''
+bayes_estimator = new_alpha / new_beta
+print(bayes_estimator)
 
+'''
+ANSWER: 0.9882928557331153
+'''
 
 '''Find also the posterior variance of lambda'''
+variance = new_alpha / (new_beta**2)
+print(variance)
+
+'''
+ANSWER: 0.0009708973843867955
+'''
 
 # C)
 print("\n***PART C***")
+inverse_alpha = 18
+inverse_beta = 20
+newinverse_alpha = inverse_alpha + n
+newinverse_beta = inverse_beta + x_i
+post_mean = newinverse_beta / (newinverse_alpha - 1)
+post_var = (newinverse_beta**2) / (((newinverse_alpha - 1)**2) * (newinverse_alpha - 2))
 
+print(post_mean, post_var)
 
 # D)
 print("\n***PART D***")
+
+'''
+True
+'''
