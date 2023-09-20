@@ -87,7 +87,7 @@ for x1 in range(-5, 6):
         mini = so.minimize(fun=f_part2q1, x0=x, method='Nelder-Mead')
         d[x1,x2] = mini['fun']
 
-print(d[(0,0)])
+print(f'Solution at (0, 0): {d[(5,5)]}')
 
 
 # QUESTION 2
