@@ -1,7 +1,5 @@
 # IMPORTS
 import math as m
-from  scipy.stats import binom
-import pandas as pd
 import matplotlib.pyplot as plt
 
 # QUESTION 1
@@ -10,9 +8,6 @@ print("------------QUESTION 1-----------")
 # A)
 print("***PART A***")
 
-
-x = .5
-print(x**(3/16) - -x**(3/16))
 
 # B)
 print("\n***PART B***")
