@@ -12,6 +12,10 @@ In .docx
 
 # QUESTION 2
 print("\n------------QUESTION 2-----------")
+'''
+for each starting point, print out the step length ak and point xk for every step k.
+Newton's Method should converge very fast.
+'''
 x, x_later = np.matrix([1.2, 1.2]), np.matrix([-1.2, 1])
 
 def f(x):
@@ -69,25 +73,22 @@ def newtons_method_line_search(xk):
         c = 0.5
         abar = 1
         alphak = abar
-        n = 1
         while left_right(xk, alphak, dk, c):
             
             alphak = row * alphak
             
         xk = xk + alphak * dk.T
         dk = dk_cal(xk)
-        k += 1
-
+        d[k] = [xk, alphak]
         print(f'\n{xk=} {alphak=} {k=}')
+        k += 1
         
-    return 1
+    return d
 
-#newtons_method_line_search(x)
+withx = newtons_method_line_search(x)
+withx_later = newtons_method_line_search(x_later)
 
-'''
-first each starting point, print out the step length ak and point xk for every step k.
-Newton's Method should converge very fast.
-'''
+print(f"{withx=}\n{withx_later=}")
 
 # QUESTION 3
 print("\n------------QUESTION 3-----------")
