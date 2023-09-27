@@ -19,6 +19,9 @@ print("\n***PART C***")
 # D)
 print("\n***PART D***")
 
+# E)
+print("\n***PART E***")
+
 
 # QUESTION 2
 print("\n------------QUESTION 2-----------")

@@ -80,15 +80,15 @@ def newtons_method_line_search(xk):
         xk = xk + alphak * dk.T
         dk = dk_cal(xk)
         d[k] = [xk, alphak]
-        print(f'\n{xk=} {alphak=} {k=}')
+        print(f'{xk=} {alphak=} {k=}')
         k += 1
         
     return d
 
-withx = newtons_method_line_search(x)
-withx_later = newtons_method_line_search(x_later)
-
-print(f"{withx=}\n{withx_later=}")
+print(f"\n{x=}")
+newtons_method_line_search(x)
+print(f"\n{x_later=}")
+newtons_method_line_search(x_later)
 
 # QUESTION 3
 print("\n------------QUESTION 3-----------")
@@ -129,7 +129,7 @@ This is written in my notebook.
 '''
 
 # PART B
-print("---------------------PART B---------------------")
+print("\n---------------------PART B---------------------")
 f12 = cp.Variable(1)
 f23 = cp.Variable(1)
 f34 = cp.Variable(1)
@@ -151,7 +151,6 @@ theta6 = cp.Variable(1)
 p = cp.hstack([p1, p2, p3])
 
 expr = cp.sum(cp.multiply(c, p))
-
 obj = cp.Minimize(expr)
 
 constraints = [p >= p_min, 
@@ -175,7 +174,8 @@ constraints = [p >= p_min,
                f23 == b[1] * (theta2 - theta3),
                f34 == b[2] * (theta3 - theta4),
                f45 == b[3] * (theta4 - theta5),
-               f56 == b[4] * (theta5 - theta6),]
+               f56 == b[4] * (theta5 - theta6),
+               f61 == b[5] * (theta6 - theta1)]
 
 electric = cp.Problem(obj, constraints)
 electric.solve()
@@ -183,6 +183,9 @@ print("\nThe optimal value is", round(electric.value,2))
 #print(f"{f12.value=}, {f23.value=}, {f34.value=}, {f45.value=}, {f56.value=}, {f61.value=}")
 
 # PART C
-print("---------------------PART C---------------------")
-for i in range(22):
-    print(f"The dual value for the {i} constraint: {constraints[i].dual_value}")
+print("\n---------------------PART C---------------------")
+for i in range(14, 17):
+    print(f"The dual value for the {i} constraint: ${round(constraints[i].dual_value[0], 2)}")
+
+for i in [p1, p2, p3, f12, f23, f34, f45, f56, f61]:
+    print(i[0].value)
