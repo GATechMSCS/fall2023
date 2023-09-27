@@ -179,13 +179,12 @@ constraints = [p >= p_min,
 
 electric = cp.Problem(obj, constraints)
 electric.solve()
-print("\nThe optimal value is", round(electric.value,2))
-#print(f"{f12.value=}, {f23.value=}, {f34.value=}, {f45.value=}, {f56.value=}, {f61.value=}")
+print("\nThe optimal value is", round(electric.value, 2))
 
 # PART C
 print("\n---------------------PART C---------------------")
 for i in range(14, 17):
     print(f"The dual value for the {i} constraint: ${round(constraints[i].dual_value[0], 2)}")
 
-for i in [p1, p2, p3, f12, f23, f34, f45, f56, f61]:
-    print(i[0].value)
+for i in [p1, p2, p3, f12, f23, f34, f45, f56, f61, theta1, theta2, theta3,theta4, theta5,theta6]:
+    print(f"{i[0].value=}")
