@@ -172,10 +172,10 @@ constraints = [p >= p_min,
                -d[1] == f45 - f34,
                -d[2] == f61 - f56,
                f12 == b[0] * (theta1 - theta2),
-               f23 == b[0] * (theta2 - theta3),
-               f34 == b[0] * (theta3 - theta4),
-               f45 == b[0] * (theta4 - theta5),
-               f56 == b[0] * (theta5 - theta6),]
+               f23 == b[1] * (theta2 - theta3),
+               f34 == b[2] * (theta3 - theta4),
+               f45 == b[3] * (theta4 - theta5),
+               f56 == b[4] * (theta5 - theta6),]
 
 electric = cp.Problem(obj, constraints)
 electric.solve()
