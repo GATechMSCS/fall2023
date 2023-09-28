@@ -101,7 +101,7 @@ print("\n------------QUESTION 4-----------")
 
 # COSTS
 # demand
-d = np.array([100,  65, 95])
+d = np.array([110,  65, 95])
 
 # unit generation costs
 c = np.array([16, 20, 8])
@@ -185,6 +185,6 @@ print("\nThe optimal value is", round(electric.value, 2))
 print("\n---------------------PART C---------------------")
 for i in range(14, 17):
     print(f"The dual value for the {i} constraint: ${round(constraints[i].dual_value[0], 2)}")
-
-for i in [p1, p2, p3, f12, f23, f34, f45, f56, f61, theta1, theta2, theta3,theta4, theta5,theta6]:
-    print(f"{i[0].value=}")
+print()
+for i, v in enumerate([p1, p2, p3, f12, f23, f34, f45, f56, f61, theta1, theta2, theta3,theta4, theta5,theta6]):
+    print(f"{v}: {v.value=}")
