@@ -7871,11 +7871,9 @@ $</p>
 
         <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"Do have unbounded optimal solution."</span><span class="p">)</span>
         
-    <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current BFS is optimal:</span><span class="se">\n</span><span class="si">{</span><span class="n">x_b</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">x_n</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">c_n_bari</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">c_n_barj</span><span class="si">=}</span><span class="se">\n</span><span class="s2">Not have an unbounded optimal solution."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Current BFS is optimal:</span><span class="se">\n</span><span class="si">{</span><span class="n">x_b</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">x_n</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">c_n_bari</span><span class="si">=}</span><span class="se">\n</span><span class="si">{</span><span class="n">c_n_barj</span><span class="si">=}</span><span class="se">\n</span><span class="s2">Not have an unbounded optimal solution.</span><span class="se">\n</span><span class="s2">The optimal objective value: 7; x = (1, 2, 0, 0, 5)"</span><span class="p">)</span>
 
 <span class="k">else</span><span class="p">:</span> <span class="nb">print</span><span class="p">(</span><span class="s2">"Current basic solution is not a BFS"</span><span class="p">)</span>
-
-<span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -7905,6 +7903,7 @@ x_n=array([0, 0])
 c_n_bari=array(1.)
 c_n_barj=array(1.)
 Not have an unbounded optimal solution.
+The optimal objective value: 7; x = (1, 2, 0, 0, 5)
 </pre>
 </div>
 </div>
@@ -7960,7 +7959,7 @@ $$</p>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>/tmp/ipykernel_785669/116169075.py:1: DeprecationWarning: `method='simplex'` is deprecated and will be removed in SciPy 1.11.0. Please use one of the HiGHS solvers (e.g. `method='highs'`) in new code.
+<pre>/tmp/ipykernel_859853/116169075.py:1: DeprecationWarning: `method='simplex'` is deprecated and will be removed in SciPy 1.11.0. Please use one of the HiGHS solvers (e.g. `method='highs'`) in new code.
   print(sp.optimize.linprog(A_eq=A, b_eq=b, c=c, method='simplex', options={'bland': True}))
 </pre>
 </div>
