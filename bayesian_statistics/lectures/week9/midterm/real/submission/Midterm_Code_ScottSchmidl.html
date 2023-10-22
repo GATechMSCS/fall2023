@@ -7595,7 +7595,7 @@ $$</p>
 <span class="n">mu2</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">alpha</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span>
 
-<span class="c1">## Initial arrays</span>
+<span class="c1"># Initial arrays</span>
 <span class="n">ys</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 <span class="n">thetas1</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
 <span class="n">thetas2</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
@@ -7603,12 +7603,12 @@ $$</p>
 
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">samples</span><span class="p">)):</span>
 
-    <span class="c1">### Distrbution from which to sample belong here</span>
-    <span class="n">v_2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">invgamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
+    <span class="c1">## Distrbution from which to sample belong here</span>
+    <span class="n">v_2</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">invgamma</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">alpha</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">beta</span><span class="p">)</span>
     <span class="n">theta1</span><span class="p">,</span> <span class="n">theta2</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu1</span><span class="p">,</span> <span class="n">v_2</span><span class="p">),</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu2</span><span class="p">,</span> <span class="n">v_2</span><span class="p">)</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">theta1</span><span class="o">+</span><span class="n">theta2</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
 
-    <span class="c1">## Build arrays for plotting</span>
+    <span class="c1"># Build arrays for plotting</span>
     <span class="n">ys</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">y</span>
     <span class="n">thetas1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta1</span>
     <span class="n">thetas2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">theta2</span>
