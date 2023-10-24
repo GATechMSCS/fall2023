@@ -1,6 +1,10 @@
 *pdf
 *doc
 *docx
+*xlsx
+*dat
+*csv
+*odc
 PreviousNotes
 portopt_cvxpy-1.py
 monthly_prices.csv
@@ -13,8 +17,6 @@ questions
 HW.png
 copy_portopt_cvxpy_python3.py
 peer_review
-*xlsx
-*dat
 /bayesian_statistics/lectures/week7and8/supplementary/Exercises54
 /deterministic_optimization/lectures/support_materials
 /bayesian_statistics/lectures/week7and8/supplementary/GIBBS
